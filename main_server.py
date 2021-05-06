@@ -4,7 +4,7 @@ from flask import Flask, render_template, Response,request,jsonify,session,redir
 import json
 import socket
 from datetime import timedelta
-
+from rpiserver import Streamer
 
 from time import sleep
 from datetime import datetime
@@ -22,8 +22,9 @@ else:
 #from camera_opencv import Camera
 app = Flask(__name__)
 
-HOST = '127.0.0.1'
-PORT = 7000
+
+streamer = Streamer('0.0.0.0', 7001)
+streamer.start()
 
 app.secret_key = "csu"
 app.config['PERMANENT_SESSION_LIFETIME'] =  timedelta(minutes=10)
@@ -63,6 +64,12 @@ def index():
     if not user:
         return redirect('/login')
     return render_template('main.html')
+
+@app.route('/upload', methods=["POST","GET"])
+def upload():
+    data = json.loads(request.form.get('data'))
+    print(data['username'])
+    Streamer.sendmessage(data['username'])
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0',port = 8080, threaded=True)
