@@ -5,11 +5,12 @@ if
 meson_options.txt:1:0: ERROR: Unknown type feature.
 
 run
+```
 pip3 install --user meson
-
-
+```
+```
 export PATH=~/.local/bin:$PATH
-
+```
 ======================================install lib:
 ```
 sudo apt install libmicrohttpd-dev libjansson-dev \
@@ -40,7 +41,7 @@ cd libsrtp-2.3.0
 ./configure --prefix=/usr --enable-openssl
 make shared_library && sudo make install
 ```
-======================================install  cmake & libwebsockets:
+##======================================install  cmake & libwebsockets:
 ```
 sudo apt install cmake
 ```
@@ -55,7 +56,7 @@ cd build
 cmake -DLWS_MAX_SMP=1 -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_C_FLAGS="-fpic" ..
 make && sudo make install
 ```
-======================================install  janus-gateway:
+##======================================install  janus-gateway:
 ```
 cd ~
 git clone https://github.com/meetecho/janus-gateway.git
