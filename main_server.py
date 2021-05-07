@@ -72,5 +72,14 @@ def upload():
     streamer.sendmessage(data['username'])
     return jsonify(data['username'])
 
+@app.route('/upload_check', methods=["GET","POST"])
+def upload_check():
+    if request.method == "POST":
+        try:
+            streamer.sendmessage('sent')
+            return jsonify('sent')
+        except:
+            return jsonify('sent')
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0',port = 8080, threaded=True)
