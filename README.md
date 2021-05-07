@@ -168,3 +168,38 @@ ffmpeg \
     -max_delay 0 -an -bufsize 1M -vsync 1 -g 10 \
     -f rtp rtp://127.0.0.1:8000/
 ```
+
+
+# other set
+====================================set config:
+```
+sudo nano /etc/nginx/sites-available/default
+```
+
+```
+server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+
+    listen 443 ssl default_server;
+    listen [::]:443 ssl default_server;
+
+    server_name _;
+
+    ssl_certificate     /etc/ssl/certs/ssl-cert-csutest.pem;
+    ssl_certificate_key /etc/ssl/private/ssl-cert-csutest.key;
+
+    location /janus {
+        proxy_pass http://localhost:8088;
+    }
+
+    location / {
+        proxy_pass http://localhost:8080;
+    }
+}
+```
+
+reset nginx
+```
+sudo systemctl restart nginx.service
+```
