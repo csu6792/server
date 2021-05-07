@@ -1,5 +1,6 @@
 # server
-
+  * raspberry pi 4
+  * Ubuntu 18
 
 if 
 meson_options.txt:1:0: ERROR: Unknown type feature.
