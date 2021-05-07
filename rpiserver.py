@@ -33,11 +33,11 @@ class Streamer(threading.Thread):
 
             print('Start listening for connections...')
 
-            conn, addr = self.s.accept()
+            self.conn, addr = self.s.accept()
             print("New connection accepted.")
 
             while True:
-                data = conn.recv(1024)
+                data = self.conn.recv(1024)
                 #print(data.decode())
                 if data:
                     if data.decode()=='left':
@@ -51,4 +51,4 @@ class Streamer(threading.Thread):
 
     def sendmessage(self,message):
         outdata = str(message)
-        self.s.sendall(outdata.encode())
+        self.conn.sendall(outdata.encode())
