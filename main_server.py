@@ -70,6 +70,7 @@ def upload():
     data = json.loads(request.form.get('data'))
     print(data['username'])
     streamer.sendmessage(data['username'])
+    return jsonify(data['username'])
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0',port = 8080, threaded=True)
