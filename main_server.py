@@ -69,7 +69,7 @@ def index():
 def upload():
     data = json.loads(request.form.get('data'))
     print(data['username'])
-    Streamer.sendmessage(data['username'])
+    streamer.sendmessage(data['username'])
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0',port = 8080, threaded=True)
