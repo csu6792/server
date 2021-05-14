@@ -169,7 +169,28 @@ ffmpeg \
     -max_delay 0 -an -bufsize 1M -vsync 1 -g 10 \
     -f rtp rtp://127.0.0.1:8000/
 ```
+# set ssl
+====================================
+```
+sudo mkdir /etc/nginx/ssl
 
+sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/nginx/ssl/nginx.key -out /etc/nginx/ssl/nginx.crt
+```
+
+```
+Country Name (2 letter code) [AU]:TW
+State or Province Name (full name) [Some-State]:Taiwan
+Locality Name (eg, city) []:Taipei
+Organization Name (eg, company) [Internet Widgits Pty Ltd]:My Company
+Organizational Unit Name (eg, section) []:My Unit
+Common Name (e.g. server FQDN or YOUR name) []:myhost.gtwang.org
+Email Address []:user@gtwang.org
+```
+
+```
+ssl_certificate /etc/nginx/ssl/nginx.crt;
+ssl_certificate_key /etc/nginx/ssl/nginx.key;
+```
 
 # other set
 ====================================set config:
