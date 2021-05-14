@@ -204,3 +204,18 @@ reset nginx
 ```
 sudo systemctl restart nginx.service
 ```
+
+#test
+======
+```
+ffmpeg \
+	-f alsa -ac 1 -i plughw:CARD=StudioTM,DEV=0 \
+	-vn \
+	-f rtp rtp://127.0.0.1:8001/ \
+    -f v4l2 -thread_queue_size 8192 -input_format yuyv422 \
+    -video_size 1280x720 -framerate 10 -i /dev/video0 \
+    -c:v h264_omx -profile:v baseline -b:v 1M -bf 0 \
+    -flags:v +global_header -bsf:v "dump_extra=freq=keyframe" \
+    -max_delay 0 -an -bufsize 1M -vsync 1 -g 10 \
+    -f rtp rtp://127.0.0.1:8000/
+```
