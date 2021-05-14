@@ -219,3 +219,9 @@ ffmpeg \
     -max_delay 0 -an -bufsize 1M -vsync 1 -g 10 \
     -f rtp rtp://127.0.0.1:8000/
 ```
+```
+audio = true
+audioport = 8001
+audiopt = 111
+audiortpmap = "opus/48000/2" 
+```
