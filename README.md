@@ -188,8 +188,24 @@ Email Address []:user@gtwang.org
 ```
 
 ```
-ssl_certificate /etc/nginx/ssl/nginx.crt;
-ssl_certificate_key /etc/nginx/ssl/nginx.key;
+server {
+  listen 80 default_server;
+  listen [::]:80 default_server;
+
+ 
+  rewrite ^(.*) https://$host$1 permanent;
+}
+server {
+  
+  listen 443 ssl default_server;
+  listen [::]:443 ssl default_server;
+
+  
+  ssl_certificate /etc/nginx/ssl/nginx.crt;
+  ssl_certificate_key /etc/nginx/ssl/nginx.key;
+
+  
+}
 ```
 
 ```
