@@ -192,6 +192,11 @@ ssl_certificate /etc/nginx/ssl/nginx.crt;
 ssl_certificate_key /etc/nginx/ssl/nginx.key;
 ```
 
+```
+openssl rsa -in domain.com.key -text > key.pem
+openssl x509 -inform PEM -in domain.com.crt > cert.pem
+```
+
 # other set
 ====================================set config:
 ```
