@@ -52,3 +52,13 @@ class Streamer(threading.Thread):
     def sendmessage(self,message):
         outdata = str(message)
         self.conn.sendall(outdata.encode())
+
+    def getgps(self,code):
+        outdata = str(code)
+        self.conn.sendall(outdata.encode())
+        #print(code)
+        indata = self.conn.recv(1024)
+        print(indata.decode())
+        if indata:
+            code = indata.decode()
+        return code
