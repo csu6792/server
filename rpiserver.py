@@ -57,6 +57,7 @@ class Streamer(threading.Thread):
         outdata = str(code)
         self.conn.sendall(outdata.encode())
         #print(code)
+        self.conn.settimeout(2.0)
         indata = self.conn.recv(1024)
         print(indata.decode())
         if indata:
