@@ -56,6 +56,6 @@ class Streamer(threading.Thread):
             if indata:
                 code = indata.decode()
         except:
-            #self.doConnect()
-            pass
+            self.doConnect()
+            #pass
         return code
