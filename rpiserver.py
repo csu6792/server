@@ -19,13 +19,17 @@ class Streamer(threading.Thread):
             print('Start listening for connections...')
             self.conn, addr = self.s.accept()
             print("New connection accepted.")
-            data = self.conn.recv(1024)
+            try:
+                data = self.conn.recv(1024)
              #print(data.decode())
-            if data:
-                if data.decode()=='left':
-                    print('left')
-            else:
-                break
+                '''if data:
+                    if data.decode()=='left':
+                        print('left')
+                else:
+                    break'''
+            except:
+                self.doConnect()
+                #break
         print('Exit thread.')
         
     def  doConnect(self):
