@@ -47,7 +47,10 @@ class Streamer(threading.Thread):
         
     def sendmessage(self,message):
         outdata = str(message)
-        self.conn.sendall(outdata.encode())
+        try:
+            self.conn.sendall(outdata.encode())
+        except:
+            self.doConnect()
 
     def getgps(self,code):
         outdata = str(code)
