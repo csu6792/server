@@ -247,7 +247,7 @@ reset nginx
 sudo systemctl restart nginx.service
 ```
 
-#test
+#support audio stream
 ======
 ```
 ffmpeg \
@@ -266,4 +266,24 @@ audio = true
 audioport = 8001
 audiopt = 111
 audiortpmap = "opus/48000/2" 
+```
+
+# support webscoket
+======
+```
+location /socket.io {
+        include proxy_params;
+        proxy_http_version 1.1;
+        proxy_buffering off;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "Upgrade";
+        proxy_pass http://127.0.0.1:5000/socket.io;
+}
+```
+
+```
+gunicorn --worker-class eventlet -w 2 -b 0.0.0.0:8080 main_server:app --daemon
+
+
+pip3 install eventlet==0.30.2
 ```
