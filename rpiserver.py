@@ -1,41 +1,45 @@
 import socket
 import threading
 
+
 class Streamer(threading.Thread):
     def __init__(self, hostname, port):
+    #def __init__(self):
         threading.Thread.__init__(self)
         self.hostname = hostname
         self.port = port
         self.s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         print('Socket created')
-        #self.running = False
-        #self.streaming = False
-        #self.s = s
-        #self.payload_size = payload_size
     def run(self):
         self.doConnect()
         #self.running = True
         while True:
             print('Start listening for connections...')
-            self.conn, addr = self.s.accept()
-            print("New connection accepted.")
             try:
-                data = self.conn.recv(1024)
-             #print(data.decode())
-                '''if data:
-                    if data.decode()=='left':
-                        print('left')
-                else:
-                    break'''
+               self.conn, addr = self.s.accept()
+               print("New connection accepted.")
+               try:
+                   data = self.conn.recv(1024)
+                #print(data.decode())
+                   '''if data:
+                       if data.decode()=='left':
+                           print('left')
+                    else:
+                       break'''
+               except:
+                   self.doConnect()
+                   print('client disconnect')
+                   #break
             except:
-                self.doConnect()
-                #break
+               print('wait client')
+               pass
         print('Exit thread.')
         
     def  doConnect(self):
         while True:
             try:
                 self.s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+                #self.s.setblocking(False)
                 self.s.bind((self.hostname, self.port))
                 print('Socket bind complete')
                 #self.payload_size = struct.calcsize("Q")
@@ -48,9 +52,11 @@ class Streamer(threading.Thread):
     def sendmessage(self,message):
         outdata = str(message)
         try:
-            self.conn.sendall(outdata.encode())
+           self.conn.settimeout(2.0)
+           self.conn.sendall(outdata.encode())
+           return 'ok'
         except:
-            self.doConnect()
+           return 'error'
 
     def getgps(self,code):
         outdata = str(code)
