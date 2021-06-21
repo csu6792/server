@@ -89,7 +89,7 @@ sudo cp -a html/* /var/www/html
 ====================================install ssl:
 ```
 sudo apt-get install ssl-cert
-sudo make-ssl-cert generate-default-csutest
+sudo make-ssl-cert generate-default-snakeoil
 ```
 
 ====================================set config:
@@ -129,8 +129,8 @@ general: {
         secure_port = 8089
 }
 certificates: {
-        cert_pem = "/etc/ssl/certs/ssl-cert-csutest.pem"
-        cert_key = "/etc/ssl/private/ssl-cert-csutest.key"
+        cert_pem = "/etc/ssl/certs/ssl-cert-snakeoil.pem"
+        cert_key = "/etc/ssl/private/ssl-cert-snakeoil.key"
 }
 ```
 
