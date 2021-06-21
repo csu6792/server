@@ -293,3 +293,10 @@ gunicorn --worker-class eventlet -w 2 -b 0.0.0.0:8080 main_server:app --daemon
 
 pip3 install eventlet==0.30.2
 ```
+
+# mapping
+
+```
+sudo nano /opt/janus/etc/janus/janus.jcfg
+# nat nat1_1 change #
+```
