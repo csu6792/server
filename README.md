@@ -1,6 +1,6 @@
 # server
   * raspberry pi 4
-  * Ubuntu 18
+  * Ubuntu 20
 
 if 
 meson_options.txt:1:0: ERROR: Unknown type feature.
@@ -13,6 +13,12 @@ pip3 install --user meson
 export PATH=~/.local/bin:$PATH
 ```
 # server
+
+```
+sudo apt-get update && sudo apt-get upgrade
+```
+
+
 ======================================install lib:
 ```
 sudo apt install libmicrohttpd-dev libjansson-dev \
