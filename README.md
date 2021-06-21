@@ -290,8 +290,11 @@ location /socket.io {
 ```
 gunicorn --worker-class eventlet -w 2 -b 0.0.0.0:8080 main_server:app --daemon
 
-
+sudo apt-get install python3-pip
 pip3 install eventlet==0.30.2
+pip3 install Flask-MQTT
+pip3 install flask
+pip3 install Flask-SocketIO
 ```
 
 # mapping
