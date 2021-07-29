@@ -2,6 +2,16 @@ import socket
 import threading
 
 
+
+def recvall(sock, count):
+        buf = b''
+        while count:
+            newbuf = sock.recv(count)
+            if not newbuf: return None
+            buf += newbuf
+            count -= len(newbuf)
+        return buf
+    
 class Streamer(threading.Thread):
     def __init__(self, hostname, port):
     #def __init__(self):
@@ -58,9 +68,30 @@ class Streamer(threading.Thread):
         except:
            return 'error'
 
+    def getjpg(self,code):
+        outdata = 'checkjpg'
+        checkdata = 'getjpg'
+        self.conn.settimeout(2.0)
+        self.conn.sendall(outdata.encode())
+        length = recvall(self.conn, 64)
+        print(type(length),length)
+        length1 = length.decode('utf-8')
+        self.conn.sendall(checkdata.encode())
+        stringData = recvall(self.conn, int(length1))
+        print(stringData)
+        return 'ok'
+        
+        
     def getgps(self,code):
         outdata = str(code)
-        try:
+        self.conn.sendall(outdata.encode())
+        #print(code)
+        self.conn.settimeout(2.0)
+        indata = self.conn.recv(1024)
+        #print(indata.decode())
+        if indata:
+            code = indata.decode()
+        '''try:
             self.conn.sendall(outdata.encode())
             #print(code)
             self.conn.settimeout(2.0)
@@ -69,6 +100,6 @@ class Streamer(threading.Thread):
             if indata:
                 code = indata.decode()
         except:
-            self.doConnect()
+            self.doConnect()'''
             #pass
         return code
