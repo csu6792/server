@@ -1,6 +1,8 @@
 # server
   * raspberry pi 4
-  * Ubuntu 20
+  * Ubuntu 20   
+
+gcp e2-micro (2 個 vCPU，1 GB 記憶體),us-west1-b ,30 GB 的標準永久磁碟儲存空間
 
 if 
 meson_options.txt:1:0: ERROR: Unknown type feature.
