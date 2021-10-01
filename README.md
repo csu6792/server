@@ -71,6 +71,7 @@ make && sudo make install
 cd ~
 git clone https://github.com/meetecho/janus-gateway.git
 cd janus-gateway
+git checkout 3cfdf6f
 ./autogen.sh
 ./configure --prefix=/opt/janus
 make
