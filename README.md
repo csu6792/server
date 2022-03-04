@@ -304,6 +304,8 @@ pip3 install flask
 pip3 install Flask-SocketIO
 ```
 
+**upload main.html and mv to server/templates , upload mainserver.py and mv to server , upload mainserver.js and mv to server/static**
+
 # mapping for server
 
 ```
