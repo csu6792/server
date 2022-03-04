@@ -1,5 +1,6 @@
 # server
   * raspberry pi 4
+  * jetson nano   **new!**
   * Ubuntu 20   
 
 gcp e2-micro (2 個 vCPU，1 GB 記憶體),us-west1-b ,30 GB 的標準永久磁碟儲存空間
