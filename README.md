@@ -1,6 +1,6 @@
 # server
   * raspberry pi 4
-  * jetson nano   **new!**
+  * jetson nano           **new!**  https://github.com/csu6792/ffmpeg-rtp-streaming/blob/main/README.md
   * Ubuntu 20   
 
 gcp e2-micro (2 個 vCPU，1 GB 記憶體),us-west1-b ,30 GB 的標準永久磁碟儲存空間
@@ -163,7 +163,7 @@ h264-sample: {
 sudo /opt/janus/bin/janus
 ```
 
-# client
+# client  for raspberry pi
 
 ====================================install ffmpeg:
 ```
@@ -179,7 +179,7 @@ ffmpeg \
     -max_delay 0 -an -bufsize 1M -vsync 1 -g 10 \
     -f rtp rtp://127.0.0.1:8000/
 ```
-# set ssl
+# set ssl for server
 ====================================
 ```
 sudo mkdir /etc/nginx/ssl
@@ -223,7 +223,7 @@ openssl rsa -in domain.com.key -text > key.pem
 openssl x509 -inform PEM -in domain.com.crt > cert.pem
 ```
 
-# other set
+# other set for server
 ====================================set config:
 ```
 sudo nano /etc/nginx/sites-available/default
@@ -257,7 +257,7 @@ reset nginx
 sudo systemctl restart nginx.service
 ```
 
-#support audio stream
+#support audio stream for raspberry pi
 ======
 ```
 ffmpeg \
@@ -278,7 +278,7 @@ audiopt = 111
 audiortpmap = "opus/48000/2" 
 ```
 
-# support webscoket
+# support webscoket for server
 ======
 ```
 location /socket.io {
@@ -291,6 +291,9 @@ location /socket.io {
 }
 ```
 
+
+# install flask server for server
+
 ```
 gunicorn --worker-class eventlet -w 2 -b 0.0.0.0:8080 main_server:app --daemon
 
@@ -301,7 +304,7 @@ pip3 install flask
 pip3 install Flask-SocketIO
 ```
 
-# mapping
+# mapping for server
 
 ```
 sudo nano /opt/janus/etc/janus/janus.jcfg
