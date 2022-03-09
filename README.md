@@ -313,7 +313,7 @@ sudo nano /opt/janus/etc/janus/janus.jcfg
 # nat nat1_1 change #
 ```
 
-# wifi setting
+# wifi setting for raspberry  pi
 ```
  sudo nano /etc/wpa_supplicant/wpa_supplicant.conf
 
