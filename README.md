@@ -312,3 +312,9 @@ pip3 install Flask-SocketIO
 sudo nano /opt/janus/etc/janus/janus.jcfg
 # nat nat1_1 change #
 ```
+
+# wifi setting
+```
+ sudo nano /etc/wpa_supplicant/wpa_supplicant.conf
+
+```
