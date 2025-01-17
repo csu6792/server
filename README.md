@@ -193,7 +193,7 @@ State or Province Name (full name) [Some-State]:Taiwan
 Locality Name (eg, city) []:Taipei
 Organization Name (eg, company) [Internet Widgits Pty Ltd]:My Company
 Organizational Unit Name (eg, section) []:My Unit
-Common Name (e.g. server FQDN or YOUR name) []:myhost.gtwang.org
+Common Name (e.g. server FQDN or YOUR name) []:myhost.gtwang.org   (ip)
 Email Address []:user@gtwang.org
 ```
 
