@@ -228,8 +228,8 @@ server {
 
     server_name _;
 
-    ssl_certificate     eyepot.pem;
-    ssl_certificate_key eyepot.key;
+    ssl_certificate /etc/nginx/ssl/nginx.crt;
+    ssl_certificate_key /etc/nginx/ssl/nginx.key;
 
     location /janus {
         proxy_pass http://localhost:8088;
