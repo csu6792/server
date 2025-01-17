@@ -219,6 +219,30 @@ server {
 ```
 
 ```
+server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+
+    listen 443 ssl default_server;
+    listen [::]:443 ssl default_server;
+
+    server_name _;
+
+    ssl_certificate     eyepot.pem;
+    ssl_certificate_key eyepot.key;
+
+    location /janus {
+        proxy_pass http://localhost:8088;
+    }
+
+    location / {
+        proxy_pass http://localhost:8080;
+    }
+}
+```
+
+
+```
 openssl rsa -in domain.com.key -text > key.pem
 openssl x509 -inform PEM -in domain.com.crt > cert.pem
 ```
